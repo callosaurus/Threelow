@@ -18,5 +18,6 @@
 -(void)holdDie:(Dice *)dice;
 -(void)reset;
 -(void)roll;
+-(void)printScore;
 
 @end

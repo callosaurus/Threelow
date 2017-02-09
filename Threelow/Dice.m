@@ -12,13 +12,13 @@
 
 -(void)randomizeValue {
     if (!self.isHeld) {
-    _currentDiceFace = arc4random_uniform(6)+1;
+    _currentDiceValue = arc4random_uniform(6)+1;
     }
 }
 
 -(void)print {
     if (!self.isHeld) {
-        switch (self.currentDiceFace) {
+        switch (self.currentDiceValue) {
             case 1:
                 NSLog(@"⚀");
                 break;
@@ -40,7 +40,7 @@
         }
     }
     if (self.isHeld) {
-        switch (self.currentDiceFace) {
+        switch (self.currentDiceValue) {
             case 1:
                 NSLog(@"[⚀]");
                 break;

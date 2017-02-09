@@ -31,6 +31,7 @@
         dice.isHeld = NO;
     }
     [self roll];
+    [self printScore];
 }
 
 -(void) roll {
@@ -41,6 +42,7 @@
     for (Dice *dice in self.diceArray) {
         [dice print];
     }
+    [self printScore];
 }
 
 -(void)holdDie:(Dice *)dice {
@@ -48,6 +50,19 @@
     for (Dice *dice in self.diceArray) {
         [dice print];
     }
+    [self printScore];
+}
+
+-(void)printScore {
+    int score = 0;
+    for (Dice *dice in self.diceArray) {
+        if (dice.isHeld) {
+            if (dice.currentDiceValue != 3) {
+                score = score + dice.currentDiceValue;
+            }
+        }
+    }
+    NSLog(@"Current Score: %i", score);
 }
 
 

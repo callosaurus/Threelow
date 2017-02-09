@@ -10,7 +10,7 @@
 
 @interface Dice : NSObject
 
-@property int currentDiceFace;
+@property int currentDiceValue;
 @property BOOL isHeld;
 
 -(void)randomizeValue;
