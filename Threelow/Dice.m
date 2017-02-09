@@ -11,7 +11,7 @@
 @implementation Dice
 
 -(void)randomizeValue {
-    _currentDiceFace = arc4random_uniform(6);
+    _currentDiceFace = arc4random_uniform(5)+1;
 }
 
 @end
