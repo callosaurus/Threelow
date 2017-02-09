@@ -8,45 +8,58 @@
 
 #import <Foundation/Foundation.h>
 #import "Dice.h"
+#import "Gamecontroller.h"
+#import "InputHandler.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
         BOOL keepRolling = YES;
-        char userInput [255];
         
-        NSLog(@"Welcome to DiceRollers™, enter 'roll' get 5 dice values! Type any other character to exit.");
+        GameController *controller = [[GameController alloc] initWithDice];
+        
         while (keepRolling) {
             
-            fgets(userInput, 255, stdin);
-            NSString *convertedString = [NSString stringWithCString:userInput encoding:NSUTF8StringEncoding];
-            NSCharacterSet *noBadChars = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-            NSString *trimmedString = [convertedString stringByTrimmingCharactersInSet:noBadChars];
+            NSLog(@"Welcome to Threelow, enter 'roll' or 'hold#' or 'quit'");
+            InputHandler *inputter = [[InputHandler alloc] init];
+            NSString *trimmedString = [inputter getString];
             
             if ([trimmedString isEqualToString:@"roll"]) {
                 
-                Dice *dice1 = [[Dice alloc] init];
-                [dice1 randomizeValue];
-                NSLog(@"%d", dice1.currentDiceFace);
+                [controller roll];
                 
-                Dice *dice2 = [[Dice alloc] init];
-                [dice2 randomizeValue];
-                NSLog(@"%d", dice2.currentDiceFace);
                 
-                Dice *dice3 = [[Dice alloc] init];
-                [dice3 randomizeValue];
-                NSLog(@"%d", dice3.currentDiceFace);
+            } else if ([trimmedString isEqualToString:@"hold1"]) {
                 
-                Dice *dice4 = [[Dice alloc] init];
-                [dice4 randomizeValue];
-                NSLog(@"%d", dice4.currentDiceFace);
+                [controller holdDie:[controller.diceArray objectAtIndex:0]];
                 
-                Dice *dice5 = [[Dice alloc] init];
-                [dice5 randomizeValue];
-                NSLog(@"%d", dice5.currentDiceFace);
-            } else {
+                
+            } else if ([trimmedString isEqualToString:@"hold2"]) {
+                
+                [controller holdDie:[controller.diceArray objectAtIndex:1]];
+                
+            } else if ([trimmedString isEqualToString:@"hold3"]) {
+                
+                [controller holdDie:[controller.diceArray objectAtIndex:2]];
+                
+            } else if ([trimmedString isEqualToString:@"hold4"]) {
+                
+                [controller holdDie:[controller.diceArray objectAtIndex:3]];
+                
+            } else if ([trimmedString isEqualToString:@"hold5"]) {
+                
+                [controller holdDie:[controller.diceArray objectAtIndex:4]];
+                
+            } else if ([trimmedString isEqualToString:@"quit"]) {
+                
+                NSLog(@"TOODLES!");
                 keepRolling = NO;
                 break;
+                
+            } else {
+                
+                NSLog(@"You didn't enter one of those three");
+                
             }
         }
         

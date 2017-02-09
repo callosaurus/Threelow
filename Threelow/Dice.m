@@ -11,7 +11,55 @@
 @implementation Dice
 
 -(void)randomizeValue {
-    _currentDiceFace = arc4random_uniform(5)+1;
+    if (!self.isHeld) {
+    _currentDiceFace = arc4random_uniform(6)+1;
+    }
 }
 
+-(void)print {
+    if (!self.isHeld) {
+        switch (self.currentDiceFace) {
+            case 1:
+                NSLog(@"⚀");
+                break;
+            case 2:
+                NSLog(@"⚁");
+                break;
+            case 3:
+                NSLog(@"⚂");
+                break;
+            case 4:
+                NSLog(@"⚃");
+                break;
+            case 5:
+                NSLog(@"⚄");
+                break;
+            case 6:
+                NSLog(@"⚅");
+                break;
+        }
+    }
+    if (self.isHeld) {
+        switch (self.currentDiceFace) {
+            case 1:
+                NSLog(@"[⚀]");
+                break;
+            case 2:
+                NSLog(@"[⚁]");
+                break;
+            case 3:
+                NSLog(@"[⚂]");
+                break;
+            case 4:
+                NSLog(@"[⚃]");
+                break;
+            case 5:
+                NSLog(@"[⚄]");
+                break;
+            case 6:
+                NSLog(@"[⚅]");
+                break;
+        }
+    }
+}
 @end

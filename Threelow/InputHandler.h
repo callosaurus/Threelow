@@ -1,5 +1,5 @@
 //
-//  Dice.h
+//  InputHandler.h
 //  Threelow
 //
 //  Created by Callum Davies on 2017-02-08.
@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Dice : NSObject
+@interface InputHandler : NSObject
 
-@property int currentDiceFace;
-@property BOOL isHeld;
-
--(void)randomizeValue;
--(void)print;
+-(NSString *)getString;
 
 @end
