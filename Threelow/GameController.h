@@ -16,6 +16,7 @@
 
 -(instancetype)initWithDice;
 -(void)holdDie:(Dice *)dice;
+-(void)reset;
 -(void)roll;
 
 @end

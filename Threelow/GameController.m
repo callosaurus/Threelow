@@ -26,6 +26,13 @@
     return self;
 }
 
+-(void) reset {
+    for (Dice *dice in self.diceArray) {
+        dice.isHeld = NO;
+    }
+    [self roll];
+}
+
 -(void) roll {
     for (Dice *dice in self.diceArray) {
         [dice randomizeValue];

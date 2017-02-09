@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
         
         while (keepRolling) {
             
-            NSLog(@"Welcome to Threelow, enter 'roll' or 'hold#' or 'quit'");
+            NSLog(@"Welcome to Threelow, enter 'roll'...'hold#'...'reset' or 'quit'");
             InputHandler *inputter = [[InputHandler alloc] init];
             NSString *trimmedString = [inputter getString];
             
@@ -50,6 +50,10 @@ int main(int argc, const char * argv[]) {
                 
                 [controller holdDie:[controller.diceArray objectAtIndex:4]];
                 
+            } else if ([trimmedString isEqualToString:@"reset"]) {
+            
+                [controller reset];
+                
             } else if ([trimmedString isEqualToString:@"quit"]) {
                 
                 NSLog(@"TOODLES!");
@@ -58,7 +62,7 @@ int main(int argc, const char * argv[]) {
                 
             } else {
                 
-                NSLog(@"You didn't enter one of those three");
+                NSLog(@"You didn't enter one of those four");
                 
             }
         }
